@@ -1,0 +1,72 @@
+[
+{
+    "Weg": "A1",
+    "Nectarindex": 3,
+    "Nectarplanten": ["Rode Klaver", "Paardenbloem", "Duizendblad"],
+    "Bloemenaanbod": 3,
+    "Maaifrequentie": "Eenmaal per jaar",
+    "Maaitijdstip": "Nazomer",
+    "Beschermende soort": "Smeerwortel"
+},
+
+{
+    "Weg": "N32",
+    "Nectarindex": 3,
+    "Nectarplanten": ["Heggenrank", "Smeerwortel", "Veldsalie"],
+    "Bloemenaanbod": 4,
+    "Maaifrequentie": "Eenmaal per jaar",
+    "Maaitijdstip": "Nazomer",
+    "Beschermende soort": "Honingklaver"
+},
+
+{
+    "Weg": "A38",
+    "Nectarindex": 2,
+    "Nectarplanten": ["Honingklaver", "Vogelwikke", "Echte Koekoeksbloem"],
+    "Bloemenaanbod": 2,
+    "Maaifrequentie": "Tweemaal per jaar",
+    "Maaitijdstip": "Nazomer",
+    "Beschermende soort": "Smeerwortel"
+},
+
+{
+    "Weg": "A2",
+    "Nectarindex": 5,
+    "Nectarplanten": ["Jacobskruiskruid", "Gewone Berenklauw", "Speerdistel"],
+    "Bloemenaanbod": 1,
+    "Maaifrequentie": "Driemaal per jaar",
+    "Maaitijdstip": "Voorjaar",
+    "Beschermende soort": "Jacobskruiskruid"
+
+},
+
+{
+    "Weg": "N200",
+    "Nectarindex": 5,
+    "Nectarplanten": ["Honingklaver", "Vogelwikke", "Echte Koekoeksbloem"],
+    "Bloemenaanbod": 2,
+    "Maaifrequentie": "Eenmaal per jaar",
+    "Maaitijdstip": "Nazomer",
+    "Beschermende soort": "Heggenrank"
+
+},
+
+{
+    "Weg": "N33",
+    "Nectarplanten": ["Wilde Marjolein", "Knoopkruid", "Grote Klaproos"],
+    "Bloemenaanbod": 5,
+    "Maaifrequentie": "Tweemaal per jaar",
+    "Maaitijdstip": "Voorjaar",
+    "Beschermende soort": "Wilde Marjolein"
+
+},
+{
+  "Weg": "A35",
+  "Nectarindex": 2,
+  "Nectarplanten": ["Paardenbloem", "Wilde Margriet", "Brandnetel"],
+  "Bloemenaanbod": 3,
+  "Maaifrequentie": "Driemaal per jaar",
+  "Maaitijdstip": "Zomer",
+  "Beschermende soort": "Vogelwikke"
+}
+]

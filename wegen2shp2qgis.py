@@ -1,8 +1,17 @@
-import requests
+import requests, os
 from shapely.geometry import LineString
 import geopandas as gpd
 from qgis.core import QgsVectorLayer, QgsProject, QgsCoordinateReferenceSystem
-import os
+
+def read_highway_names(filename):
+  highway_names = []
+  try:
+    with open(filename, "r") as f:
+      for line in f:
+        highway_names.append(line.rstrip())
+  except FileNotFoundError:
+    print(f"Error: File '{filename}' not found.")
+  return highway_names
 
 def fetch_way_coordinates(way_name):
     overpass_url = "http://overpass-api.de/api/interpreter"
@@ -31,6 +40,7 @@ def fetch_way_coordinates(way_name):
             lines.append(LineString(line_coords))
         else:
             print(f"Geen coördinaten gevonden voor weg ID: {way['id']}") 
+    print('Coordinaten toegevoegd aan lijst.')
     return lines
 
 def create_shp_file(way_name, shp_output_dir):
@@ -39,10 +49,12 @@ def create_shp_file(way_name, shp_output_dir):
         print(f"Er zijn {len(lines)} lijnen gevonden.")
     else:
         print("Er zijn geen lijnen gevonden voor deze wegnaam.")
+    
     def create_shp_from_lines(lines, file_path):
         gdf = gpd.GeoDataFrame(geometry=lines, crs="EPSG:4326")
         gdf.to_file(file_path, driver='ESRI Shapefile')
-    output_file_path = shp_output_dir
+
+    output_file_path = os.path.join(shp_output_dir, f"{way_name}.shp")
     create_shp_from_lines(lines, output_file_path)
 
 def gather_all_files(dir_path):
@@ -63,11 +75,16 @@ def add_layers_from_files(file_paths):
         else:
             print(f'Layer {os.path.basename(path)} failed to load!')
 
+
 shp_output_dir = r'C:\Users\singh\Documents\INMINDAEN-Python-Code\db2qgis\data'
 shp_read_dir = r'C:\Users\singh\Documents\INMINDAEN-Python-Code\db2qgis\data\\'
+way_names_file = r'C:\Users\singh\Documents\INMINDAEN-Python-Code\db2qgis\data\highway_names.txt'
 crs = QgsCoordinateReferenceSystem('EPSG:4326')
-way_name = 'N11'
-create_shp_file(way_name, shp_output_dir)
-file_paths = gather_all_files(shp_read_dir)
-add_layers_from_files(file_paths)
-iface.mapCanvas().refreshAllLayers()
+
+way_names = read_highway_names(way_names_file)
+
+for way_name in way_names:
+    create_shp_file(way_name, shp_output_dir)
+    file_paths = gather_all_files(shp_read_dir)
+    add_layers_from_files(file_paths)
+    iface.mapCanvas().refreshAllLayers()
